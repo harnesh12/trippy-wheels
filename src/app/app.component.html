@@ -3,7 +3,7 @@
         <a href="#about-us" class="option">About Us</a>
         <a href="#caravans" class="option">Caravans</a>
         <a href="#base-camps" class="option">Base Camps</a>
-        <a href="#contact" class="option">Contact</a>
+        <a href="#contact" class="option">Contact Us</a>
     </div>
     <div fxShow="true" fxHide.gt-sm="true">
         <a class="hamburger-menu" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></a>
@@ -20,13 +20,11 @@
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
         <div class="content">
-            <slideshow
-                [imageUrls]="slideshowImages"
-                [autoPlay]="true"
-                [autoPlayInterval]="4000"
-                [showDots]="true"
-                [showArrows]="false">
-            </slideshow>
+            <ngx-image-gallery
+                #slideShowGallery
+                [images]="slideshowImages"
+                [conf]="slideShowConf">
+            </ngx-image-gallery>
             <a name="about-us"></a>
             <div class="description">
                 <span class="heading">About Us</span>
@@ -42,20 +40,22 @@
             <a name="caravans"></a>
             <div class="description">
                 <span class="heading">Caravans</span>
+                <p>
+                    3 to 4 sleep capacity, kitchenette with basic cooking ingredients, linen, self-drive or with driver
+                </p>
                 <ngx-image-gallery
                     #caravansGallery
                     [images]="caravanImages"
                     [conf]="conf">
                 </ngx-image-gallery>
-                <p>
-                    2 to 3 sleep capacity, kitchenette with basic cooking ingredients, linen, self-drive or with driver
-                </p>
             </div>
+            <br/><br/>
             <a name="base-camps"></a>
             <div class="description">
                 <span class="heading">Base Camps</span>
                 <p>
-                    We have tie-ups with places for safe and secure parking overnight. One can also use facilities and services as and when required.
+                    We have tie-ups across Karnataka for base camps with safe and secure parking for caravans overnight. One can also use facilities and services as and when required.
+                   <br/><br/>
                     <ngx-image-gallery
                         #homestaysGallery
                         [images]="homestayImages"

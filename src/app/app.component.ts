@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from 'ngx-image-gallery';
 
 @Component({
@@ -6,8 +6,8 @@ import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from 'ngx-image
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  @ViewChild(NgxImageGalleryComponent) homestaysGallery: NgxImageGalleryComponent;
+export class AppComponent implements AfterViewInit {
+  @ViewChild('slideShowGallery') slideShowGallery: NgxImageGalleryComponent;
 
   conf: GALLERY_CONF = {
     backdropColor: 'rgb(250, 250, 250)',
@@ -15,18 +15,29 @@ export class AppComponent {
     showCloseControl: false,
     showDeleteControl: false,
     showImageTitle: false,
-    inline: true
+    inline: true,
+    showArrows: true
+  };
+
+  slideShowConf: GALLERY_CONF = {
+    backdropColor: 'rgb(250, 250, 250)',
+    imageOffset: '0px',
+    showCloseControl: false,
+    showDeleteControl: false,
+    showImageTitle: true,
+    inline: true,
+    showArrows: false
   };
 
   slideshowImages = [
-    'assets/logo.png',
-    'assets/locations/1.jpg',
-    'assets/locations/2.jpg',
-    'assets/locations/3.jpg',
-    'assets/locations/4.jpg',
-    'assets/locations/5.jpg',
-    'assets/locations/6.jpg',
-    'assets/locations/7.jpg',
+    {url: 'assets/logo.png'},
+    {url: 'assets/locations/1.jpg', title: 'Napping under a tree, somewhere in Coorg'},
+    {url: 'assets/locations/2.jpg', title: 'Waiting for sunset at a beach in Mangalore'},
+    {url: 'assets/locations/3.jpg', title: 'Party mode on at our base camp in Sakleshpur'},
+    {url: 'assets/locations/4.jpg', title: 'Endless hills of Sakleshpur'},
+    {url: 'assets/locations/5.jpg', title: 'Keep calm and caravan on!'},
+    {url: 'assets/locations/6.jpg', title: 'Off the beaten trail in Coorg'},
+    {url: 'assets/locations/7.jpg', title: 'Waking up to a magical sunrise in Sakleshpur'},
   ];
 
   caravanImages: GALLERY_IMAGE[] = [
@@ -83,8 +94,16 @@ export class AppComponent {
     }
   ];
 
-  openHomestaysGallery(index: number = 0) {
-    this.homestaysGallery.open(index);
-    return false;
+  ngAfterViewInit() {
+    this.slideShowGallery.conf = this.slideShowConf;
+    setInterval(this.cycleImages, 3500);
+  }
+
+  private cycleImages = () => {
+    if(this.slideShowGallery.activeImageIndex === this.slideshowImages.length - 1) {
+      this.slideShowGallery.activeImageIndex = 0;
+    } else {
+      this.slideShowGallery.next();
+    }
   }
 }

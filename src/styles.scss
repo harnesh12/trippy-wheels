@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: vertical-brushy;
-    src: url('assets/casual-perfectionist.ttf');
+    src: url('assets/spring.ttf');
 }
 
 * {
@@ -22,6 +22,7 @@ html {
 body {
     font-family: jaime-blues;
     margin: 0;
+    overflow-x: hidden;
 }
 
 body, a, h1, h2, h3, h4, h5, p {
@@ -36,12 +37,20 @@ body, a, h1, h2, h3, h4, h5, p {
 
 ::-webkit-scrollbar
 {
-    width: 3px;
+    width: 10px;
     height: 5px;
-    background-color: #808080;
+    background-color: #2b2a2a;
 }
 
 ::-webkit-scrollbar-thumb
 {
-	background-color: #cccccc;
+	background-color: #75b9aa;
+}
+
+ngx-image-gallery {
+    height: calc(100vh - 65px) !important;
+    .image img {
+        width: 100vw !important;
+        height: calc(100vh - 65px) !important;
+    }
 }
