@@ -25,7 +25,7 @@ export class AppComponent implements AfterViewInit {
     showCloseControl: false,
     showDeleteControl: false,
     showImageTitle: true,
-    inline: true,
+    inline: false,
     showArrows: false
   };
 
