@@ -32,7 +32,7 @@ export class AppComponent implements AfterViewInit {
   slideshowImages = [
     {url: 'assets/logo.png'},
     {url: 'assets/locations/1.jpg', title: 'Napping under a tree, somewhere in Coorg'},
-    {url: 'assets/locations/2.jpg', title: 'beach in Mangalore'},
+    {url: 'assets/locations/2.jpg', title: 'Waiting for sunset at a beach in Mangalore'},
     {url: 'assets/locations/3.jpg', title: 'Party mode on at our base camp in Sakleshpur'},
     {url: 'assets/locations/4.jpg', title: 'Endless hills of Sakleshpur'},
     {url: 'assets/locations/5.jpg', title: 'Keep calm and caravan on!'},
