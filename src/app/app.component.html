@@ -20,11 +20,13 @@
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
         <div class="content">
-            <ngx-image-gallery
-                #slideShowGallery
-                [images]="slideshowImages"
-                [conf]="slideShowConf">
-            </ngx-image-gallery>
+            <slideshow
+                [imageUrls]="slideshowImages"
+                [autoPlay]="true"
+                [autoPlayInterval]="4000"
+                [showDots]="true"
+                [showArrows]="false">
+            </slideshow>
             <a name="about-us"></a>
             <div class="description">
                 <span class="heading">About Us</span>
